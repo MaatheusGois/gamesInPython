@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 
+<<<<<<< HEAD
+import pygame, random
+=======
 import pygame
+>>>>>>> 97e7c25517d28be422fe53f7e4892ce40f6b4cf8
 from pygame.locals import *
 
 if not pygame.font:
@@ -31,18 +35,63 @@ circulo = pygame.draw.circle(ecra, vermelho, (xpos, ypos), raio_circulo)
 movimento_em_x = 1
 movimento_em_y = 1
 
+<<<<<<< HEAD
+# asteroides
+velocidade_do_asteroide = 1
+posicao_dos_asteroides_em_x = random.randint(10, 630)
+posicao_dos_asteroides_em_y = 0
+
+
+asteroide = pygame.draw.circle(ecra, vermelho, (posicao_dos_asteroides_em_x, posicao_dos_asteroides_em_y), raio_circulo)
+pygame.display.flip()
+
+
+=======
 pygame.display.flip()
 
 pygame.key.set_repeat(100, 100)
+>>>>>>> 97e7c25517d28be422fe53f7e4892ce40f6b4cf8
 
 while True:
     for event in pygame.event.get():
         pass
 
+<<<<<<< HEAD
+    pygame.display.flip()
+    posicao_dos_asteroides_em_y += velocidade_do_asteroide
+=======
+>>>>>>> 97e7c25517d28be422fe53f7e4892ce40f6b4cf8
     tecla_pressionada = pygame.key.get_pressed()
 
     if tecla_pressionada[K_LEFT]:
         xpos -= movimento_em_x
+<<<<<<< HEAD
+        if xpos <= 0:
+            xpos = 0
+
+    if tecla_pressionada[K_RIGHT]:
+        xpos += movimento_em_x
+        if xpos >= 640:
+            xpos = 640
+
+    if tecla_pressionada[K_UP]:
+        ypos -= movimento_em_y
+        if ypos <= 0:
+            ypos = 0
+
+    if tecla_pressionada[K_DOWN]:
+        ypos += movimento_em_y
+        if ypos >= 480:
+            ypos = 480
+    if posicao_dos_asteroides_em_y > 480:
+        posicao_dos_asteroides_em_y = 0
+        posicao_dos_asteroides_em_x = random.randint(10, 630)
+
+    ecra.fill(preto)
+    circulo = pygame.draw.circle(ecra, vermelho, (xpos, ypos), raio_circulo)
+    asteroide = pygame.draw.circle(ecra, vermelho, (posicao_dos_asteroides_em_x, posicao_dos_asteroides_em_y),
+                                  raio_circulo)
+=======
 
     if tecla_pressionada[K_RIGHT]:
         xpos += movimento_em_x
@@ -55,4 +104,5 @@ while True:
 
     ecra.fill(preto)
     circulo = pygame.draw.circle(ecra, vermelho, (xpos, ypos), raio_circulo)
+>>>>>>> 97e7c25517d28be422fe53f7e4892ce40f6b4cf8
     pygame.display.flip()
