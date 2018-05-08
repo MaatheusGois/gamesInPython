@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 
-<<<<<<< HEAD
 import pygame, random
-=======
-import pygame
->>>>>>> 97e7c25517d28be422fe53f7e4892ce40f6b4cf8
+
 from pygame.locals import *
 
 if not pygame.font:
@@ -46,26 +43,20 @@ asteroide = pygame.draw.circle(ecra, vermelho, (posicao_dos_asteroides_em_x, pos
 pygame.display.flip()
 
 
-=======
-pygame.display.flip()
-
-pygame.key.set_repeat(100, 100)
->>>>>>> 97e7c25517d28be422fe53f7e4892ce40f6b4cf8
 
 while True:
     for event in pygame.event.get():
         pass
 
-<<<<<<< HEAD
+
     pygame.display.flip()
     posicao_dos_asteroides_em_y += velocidade_do_asteroide
-=======
->>>>>>> 97e7c25517d28be422fe53f7e4892ce40f6b4cf8
+
     tecla_pressionada = pygame.key.get_pressed()
 
     if tecla_pressionada[K_LEFT]:
         xpos -= movimento_em_x
-<<<<<<< HEAD
+
         if xpos <= 0:
             xpos = 0
 
@@ -91,7 +82,7 @@ while True:
     circulo = pygame.draw.circle(ecra, vermelho, (xpos, ypos), raio_circulo)
     asteroide = pygame.draw.circle(ecra, vermelho, (posicao_dos_asteroides_em_x, posicao_dos_asteroides_em_y),
                                   raio_circulo)
-=======
+
 
     if tecla_pressionada[K_RIGHT]:
         xpos += movimento_em_x
@@ -104,5 +95,5 @@ while True:
 
     ecra.fill(preto)
     circulo = pygame.draw.circle(ecra, vermelho, (xpos, ypos), raio_circulo)
->>>>>>> 97e7c25517d28be422fe53f7e4892ce40f6b4cf8
+
     pygame.display.flip()
