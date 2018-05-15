@@ -61,7 +61,7 @@ posicao_dos_asteroides_em_y6 = random.randint(320, 480)
 # ------------------------------------------ recompensas ----------------------------------------------------------------
 posicao_da_recompensa_em_x = random.randint(0, 640)
 posicao_da_recompensa_em_y = random.randint(0, 480)
-
+score2 = 0
 # ------------------------------------------ velocidade do jogo ---------------------------------------------------------
 velocidadeDoJogo = 0
 
@@ -105,33 +105,34 @@ while True:
     if velocidadeDoJogo >= 3600:
         posicao_dos_asteroides_em_x_right3 += velocidade_do_asteroide
 
-    #------------------------------------------VELOCIDADE DO JOGO------------------------------------------------------
-    if velocidadeDoJogo >= 300 and velocidadeDoJogo <= 600:
+        # ------------------------------------------VELOCIDADE DO JOGO------------------------------------------------------
+    if velocidadeDoJogo >= 300 and velocidadeDoJogo <= 1000:
         fps = 120
-    elif velocidadeDoJogo >= 600 and velocidadeDoJogo <= 900:
+    elif velocidadeDoJogo >= 1000 and velocidadeDoJogo <= 1500:
+        fps = 125
+    elif velocidadeDoJogo >= 1500 and velocidadeDoJogo <= 3000:
         fps = 150
-    elif velocidadeDoJogo >= 900 and velocidadeDoJogo <= 1200:
-        fps = 170
-    elif velocidadeDoJogo >= 1200 and velocidadeDoJogo <= 1500:
-        fps = 220
-    elif velocidadeDoJogo >= 1500 and velocidadeDoJogo <= 1800:
+    elif velocidadeDoJogo >= 3000 and velocidadeDoJogo <= 5000:
+        fps = 175
+    elif velocidadeDoJogo >= 5000 and velocidadeDoJogo <= 8000:
         fps = 200
-
-    elif velocidadeDoJogo >= 1800 and velocidadeDoJogo <= 2100:
+    elif velocidadeDoJogo >= 8000 and velocidadeDoJogo <= 10000:
+        fps = 225
+    elif velocidadeDoJogo >= 10000 and velocidadeDoJogo <= 12000:
         fps = 250
-    elif velocidadeDoJogo >= 2100 and velocidadeDoJogo <= 2400:
-        fps = 270
-    elif velocidadeDoJogo >= 2400 and velocidadeDoJogo <= 2700:
+    elif velocidadeDoJogo >= 12000 and velocidadeDoJogo <= 14000:
+        fps = 275
+    elif velocidadeDoJogo >= 14000 and velocidadeDoJogo <= 20000:
         fps = 300
-    elif velocidadeDoJogo >= 2700 and velocidadeDoJogo <= 3000:
-        fps = 330
-    elif velocidadeDoJogo >= 3000 and velocidadeDoJogo <= 3300:
-        fps = 360
-    elif velocidadeDoJogo >= 3300 and velocidadeDoJogo <= 3600:
-        fps = 390
-    elif velocidadeDoJogo >= 3600:
-        fps = 420
+    elif velocidadeDoJogo >= 20000 and velocidadeDoJogo <= 25000:
+        fps = 325
+    elif velocidadeDoJogo >= 25000 and velocidadeDoJogo <= 30000:
+        fps = 350
+    elif velocidadeDoJogo >= 30000:
+        fps = 375
     relogio.tick(fps)
+
+
 
     # ----------------------------------------- Movimento Personagem ----------------------------------------------------
     tecla_pressionada = pygame.key.get_pressed()
@@ -252,8 +253,6 @@ while True:
     # ------------------------------------------ recompensas ----------------------------------------------------------------
     recompensa = pygame.draw.circle(ecra, verde, (posicao_da_recompensa_em_x, posicao_da_recompensa_em_y), raio_circulo)
 
-    pygame.display.flip()
-
     # ------------------------------------------------- detectando colisão ---------------------------------------------
     if circulo.colliderect(asteroide):
         break
@@ -279,10 +278,22 @@ while True:
         break
     if circulo.colliderect(asteroide12):
         break
+
+
+
+    # ------------------------------------------- Score ----------------------------------------------------------------
+    velocidadeDoJogo += 1
+    score = velocidadeDoJogo
+    fonte = pygame.font.Font(None, 30)
+    pontuacao = fonte.render('Pontuação: ' + str(score+score2), 2, azul)
+    caixadepontuacao = pontuacao.get_rect()
+    ecra.blit(pontuacao, [400, 40])
+    pontuacao_final = score+score2
+
+    # ------------------------------------------- Recompensa -----------------------------------------------------------
     if circulo.colliderect(recompensa):
         posicao_da_recompensa_em_x = random.randint(0, 640)
         posicao_da_recompensa_em_y = random.randint(0, 480)
-
-    velocidadeDoJogo += 1
-print(fps)
+        score2 += 10000
+print(pontuacao_final)
 pygame.quit()
