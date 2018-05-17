@@ -3,6 +3,8 @@ from pygame.locals import *
 
 pygame.init()
 
+pygame.mixer.music.load("Som/som.wav")
+pygame.mixer.music.play()
 # ------------------------------------------- Cores ---------------------------------------------------------------------
 vermelho = (255, 0, 0)
 azul = (0, 0, 255)
