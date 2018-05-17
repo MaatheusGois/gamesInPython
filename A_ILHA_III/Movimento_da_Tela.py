@@ -15,6 +15,7 @@ vermelho = (255, 0, 0)
 azul = (0, 0, 255)
 preto = (0, 0, 0)
 verde = (0, 255, 0)
+branco = (255,255,255)
 
 # ---------------------------------------------Tamanho da tela-----------------------------------------------------------
 comprimento_ecra = 640
@@ -27,11 +28,11 @@ raio_circulo = 10
 # ------------------------------------------ Velocidade e posições ------------------------------------------------------
 xpos = 320
 ypos = 240
-movimento_em_x = 1
-movimento_em_y = 1
-velocidade_do_asteroide = 1
+movimento_em_x = 2
+movimento_em_y = 2
+velocidade_do_asteroide = 2
 relogio = pygame.time.Clock()
-fps = 100
+fps = 90
 
 # --------------------------------------- asteroides que descem (down) --------------------------------------------------
 posicao_dos_asteroides_em_x = random.randint(10, 208)
@@ -80,7 +81,7 @@ while True:
     pygame.display.flip()
 
     # ----------------------------------------- asteroides que descem (down) --------------------------------------------
-    if velocidadeDoJogo >= 300:
+    if velocidadeDoJogo >= 350:
         posicao_dos_asteroides_em_y_down += velocidade_do_asteroide
     if velocidadeDoJogo >= 1500:
         posicao_dos_asteroides_em_y_down2 += velocidade_do_asteroide
@@ -88,7 +89,7 @@ while True:
         posicao_dos_asteroides_em_y_down3 += velocidade_do_asteroide
 
     # -----------------------------------------asteroides que sobem (Up) ------------------------------------------------
-    if velocidadeDoJogo >= 600:
+    if velocidadeDoJogo >= 700:
         posicao_dos_asteroides_em_y_up -= velocidade_do_asteroide
     if velocidadeDoJogo >= 1800:
         posicao_dos_asteroides_em_y_up2 -= velocidade_do_asteroide
@@ -96,7 +97,7 @@ while True:
         posicao_dos_asteroides_em_y_up3 -= velocidade_do_asteroide
 
     # -----------------------------------------asteroides à esquerda (Left) ---------------------------------------------
-    if velocidadeDoJogo >= 900:
+    if velocidadeDoJogo >= 1000:
         posicao_dos_asteroides_em_x_left -= velocidade_do_asteroide
     if velocidadeDoJogo >= 2100:
         posicao_dos_asteroides_em_x_left2 -= velocidade_do_asteroide
@@ -105,7 +106,7 @@ while True:
         posicao_dos_asteroides_em_x_left3 -= velocidade_do_asteroide
 
     # -----------------------------------------asteroides à direita (Right) ---------------------------------------------
-    if velocidadeDoJogo >= 1200:
+    if velocidadeDoJogo >= 1300:
         posicao_dos_asteroides_em_x_right += velocidade_do_asteroide
     if velocidadeDoJogo >= 2400:
         posicao_dos_asteroides_em_x_right2 += velocidade_do_asteroide
@@ -113,30 +114,28 @@ while True:
         posicao_dos_asteroides_em_x_right3 += velocidade_do_asteroide
 
         # ------------------------------------------VELOCIDADE DO JOGO------------------------------------------------------
-    if velocidadeDoJogo >= 300 and velocidadeDoJogo <= 1000:
-        fps = 120
-    elif velocidadeDoJogo >= 1000 and velocidadeDoJogo <= 1500:
+    if velocidadeDoJogo < 2150:
+        fps = 90
+    elif velocidadeDoJogo == 2150:
+        time.sleep(2.25)
+    elif velocidadeDoJogo >= 2150 and velocidadeDoJogo <= 3000:
+        fps = 110
+    elif velocidadeDoJogo >= 3000 and velocidadeDoJogo <= 3500:
         fps = 125
-    elif velocidadeDoJogo >= 1500 and velocidadeDoJogo <= 3000:
-        fps = 150
-    elif velocidadeDoJogo >= 3000 and velocidadeDoJogo <= 5000:
-        fps = 175
-    elif velocidadeDoJogo >= 5000 and velocidadeDoJogo <= 8000:
-        fps = 200
+    elif velocidadeDoJogo >= 3500 and velocidadeDoJogo <= 4000:
+        fps = 145
+    elif velocidadeDoJogo >= 4000 and velocidadeDoJogo <= 4500:
+        fps = 160
     elif velocidadeDoJogo >= 8000 and velocidadeDoJogo <= 10000:
-        fps = 225
+        fps = 180
     elif velocidadeDoJogo >= 10000 and velocidadeDoJogo <= 12000:
-        fps = 250
+        fps = 200
     elif velocidadeDoJogo >= 12000 and velocidadeDoJogo <= 14000:
-        fps = 275
-    elif velocidadeDoJogo >= 14000 and velocidadeDoJogo <= 20000:
+        fps = 225
+    elif velocidadeDoJogo >= 14000 and velocidadeDoJogo <= 45000:
+        fps = 250
+    elif velocidadeDoJogo > 45000:
         fps = 300
-    elif velocidadeDoJogo >= 20000 and velocidadeDoJogo <= 25000:
-        fps = 325
-    elif velocidadeDoJogo >= 25000 and velocidadeDoJogo <= 30000:
-        fps = 350
-    elif velocidadeDoJogo >= 30000:
-        fps = 375
     relogio.tick(fps)
 
 
@@ -220,10 +219,10 @@ while True:
         posicao_dos_asteroides_em_y6 = random.randint(320, 480)
 
     # -----------------------------------------  fundo da tela ----------------------------------------------------------
-    ecra.fill(preto)
+    ecra.fill(branco)
 
     # ---------------------------------------- Circulo Azul ( personagem) -----------------------------------------------
-    circulo = pygame.draw.circle(ecra, azul, (xpos, ypos), raio_circulo)
+    circulo = pygame.draw.circle(ecra, preto, (xpos, ypos), raio_circulo)
 
     # ------------------------------------ Asteroids fase1 ---------------------------------------------------------------
     asteroide = pygame.draw.circle(ecra, vermelho, (posicao_dos_asteroides_em_x, posicao_dos_asteroides_em_y_down),
@@ -258,7 +257,7 @@ while True:
                                      raio_circulo)
 
     # ------------------------------------------ recompensas ----------------------------------------------------------------
-    recompensa = pygame.draw.circle(ecra, verde, (posicao_da_recompensa_em_x, posicao_da_recompensa_em_y), raio_circulo)
+    recompensa = pygame.draw.circle(ecra, azul, (posicao_da_recompensa_em_x, posicao_da_recompensa_em_y), raio_circulo)
 
     # ------------------------------------------------- detectando colisão ---------------------------------------------
     if circulo.colliderect(asteroide):
@@ -305,7 +304,7 @@ while True:
     velocidadeDoJogo += 1
     score = velocidadeDoJogo
     fonte = pygame.font.Font(None, 30)
-    pontuacao = fonte.render('Pontuação: ' + str(score+score2), 2, azul)
+    pontuacao = fonte.render('Pontuação: ' + str(score+score2), 2, preto)
     caixadepontuacao = pontuacao.get_rect()
     ecra.blit(pontuacao, [400, 40])
     pontuacao_final = score+score2
@@ -314,6 +313,6 @@ while True:
     if circulo.colliderect(recompensa):
         posicao_da_recompensa_em_x = random.randint(0, 640)
         posicao_da_recompensa_em_y = random.randint(0, 480)
-        score2 += 10000
+        score2 += 1000
 print(pontuacao_final)
 pygame.quit()
