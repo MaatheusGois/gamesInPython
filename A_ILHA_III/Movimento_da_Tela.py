@@ -1,10 +1,10 @@
-import pygame, random
+import pygame, random,time
 from pygame.locals import *
 
 pygame.init()
-
 pygame.mixer.music.load("Som/som.wav")
 pygame.mixer.music.play()
+
 # ------------------------------------------- Cores ---------------------------------------------------------------------
 vermelho = (255, 0, 0)
 azul = (0, 0, 255)
@@ -257,28 +257,70 @@ while True:
 
     # ------------------------------------------------- detectando colisão ---------------------------------------------
     if circulo.colliderect(asteroide):
+        pygame.mixer.music.load("Som/lose.ogg")
+        pygame.mixer.music.play()
+        time.sleep(0.6)
         break
     if circulo.colliderect(asteroide2):
+        pygame.mixer.music.load("Som/lose.ogg")
+        pygame.mixer.music.play()
+        time.sleep(0.6)
         break
     if circulo.colliderect(asteroide3):
+        pygame.mixer.music.load("Som/lose.ogg")
+        pygame.mixer.music.play()
+        time.sleep(0.6)
         break
     if circulo.colliderect(asteroide4):
+        pygame.mixer.music.load("Som/lose.ogg")
+        pygame.mixer.music.play()
+        time.sleep(0.6)
         break
     if circulo.colliderect(asteroide5):
+        pygame.mixer.music.load("Som/lose.ogg")
+        pygame.mixer.music.play()
+        time.sleep(0.6)
         break
     if circulo.colliderect(asteroide6):
+        pygame.mixer.music.load("Som/lose.ogg")
+        pygame.mixer.music.play()
+        time.sleep(0.6)
+
         break
     if circulo.colliderect(asteroide7):
+        pygame.mixer.music.load("Som/lose.ogg")
+        pygame.mixer.music.play()
+        time.sleep(0.6)
+
         break
     if circulo.colliderect(asteroide8):
+        pygame.mixer.music.load("Som/lose.ogg")
+        pygame.mixer.music.play()
+        time.sleep(0.6)
+
         break
     if circulo.colliderect(asteroide9):
+        pygame.mixer.music.load("Som/lose.ogg")
+        pygame.mixer.music.play()
+        time.sleep(0.6)
+
         break
     if circulo.colliderect(asteroide10):
+        pygame.mixer.music.load("Som/lose.ogg")
+        pygame.mixer.music.play()
+        time.sleep(0.6)
+
         break
     if circulo.colliderect(asteroide11):
+        pygame.mixer.music.load("Som/lose.ogg")
+        pygame.mixer.music.play()
+        time.sleep(0.6)
+
         break
     if circulo.colliderect(asteroide12):
+        pygame.mixer.music.load("Som/lose.ogg")
+        pygame.mixer.music.play()
+        time.sleep(0.6)
         break
 
 
